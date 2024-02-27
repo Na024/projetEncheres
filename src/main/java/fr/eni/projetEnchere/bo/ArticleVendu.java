@@ -14,8 +14,10 @@ public class ArticleVendu {
 		private Integer miseAPrix;
 		private Integer prixVente;
 		private String etatVente;
+		
 		private Utilisateur acheteur;
 		private Utilisateur vendeur;
+		
 		private Categorie categorieArticle;
 		private Retrait lieuRetrait;
 		private List<Enchere> enchères;
