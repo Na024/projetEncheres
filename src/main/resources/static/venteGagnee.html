@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>vente remportée</title>
+</head>
+<!-- Navbar -->
+<div th:replace="~{fragment/fragment-enteteConnecte :: frag-entete}"></div>
+
+<body>
+    <h1>Vous avez remporté la vente</h1>
+    <main>
+        <div class="container formVentegagnee">
+            <img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt="">
+
+            <div>
+                    <h2>Titre vente</h2>
+                    <div>
+                        <label for="">Description : </label>
+                        <input type="text" name="" id="" readonly>
+                    </div>
+                
+                    <div>
+                        <label for="">Meilleure offre : </label>
+                        <input type="text" name="" id="" readonly>
+                    </div>
+                    <div>
+                        <label for="">Mise à prix : </label>
+                        <input type="text" name="" id="" readonly
+                    </div>
+                    <div>
+                        <label for="">Retrait : </label>
+                        <input type="text" name="" id="" readonly>
+                    </div>
+                    <div>
+                        <label for="">Vendeur : </label>
+                        <input type="text" name="" id="" readonly>
+                    </div>
+                    <div>
+                        <label for="">Tel : </label>
+                        <input type="tel" name="" id="" readonly>
+                    </div>               
+                <button type="submit">Back</button>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

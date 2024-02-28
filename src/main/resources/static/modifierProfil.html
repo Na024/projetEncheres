@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Mon profil</title>
+</head>
+<!-- Navbar -->
+<div th:replace="~{fragment/fragment-enteteConnecte :: frag-entete}"></div>
+
+<body>
+    <h1>Mon profil</h1>
+    <div class="container formProfil">
+        <form action="" method="post">
+        <div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Pseudo : </label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="">Nom : </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <!-- se fait avec thymeleaf donc juste besoin d'un ? ou pas comme ya les regex ?? -->
+        
+        
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Prénom : </label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="">Email : </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Telephone : </label>
+                    <input type="tel" pattern="[0]{1}[1-9]{1}[0-9]{8}" class="form-control">
+                </div>
+        
+                <div class="col-md-6">
+                    <label for="">Rue : </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Code postal : </label>
+                    <input type="text" class="form-control">
+                </div>
+        
+                <div class="col-md-6">
+                    <label for="">Ville : </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Mot de passe actuel: </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Mot de passe : </label>
+                    <input type="text" class="form-control">
+                </div>
+        
+                <div class="col-md-6">
+                    <label for="">Confirmation :</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6">
+        
+        
+                    <label for="">Crédit </label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button style="margin: 20px;"  type="submit"><a href="#">Enregistrer</a> </button>
+            <button style="margin: 20px;" type="reset"><a href="encheres.html">Supprimer mon compte</a></button>
+        </div>     
+    </form>
+    
+    </div>
+</body>
+
+</html>
+

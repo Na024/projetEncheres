@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Connexion</title>
+</head>
+<!-- Navbar -->
+<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
+
+<body>
+    <div class="container connexion">
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="email1" class="form-label">Identifiant :</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="mb-3">
+                <label for="password1" class="form-label">Mot de passe :</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Connexion</button>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="checkbox">
+                <label class="form-check-label" for="checkbox">Se souvenir de moi </label>
+            </div>
+            <label for="#"><a href="#">Mot de passe oublié</a></label>
+        
+        
+        </form>
+        <button><a href="#">Créer un compte</a></button>
+    </div>
+    
+</body>
+</html>

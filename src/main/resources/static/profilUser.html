@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Profil</title> <!-- rajouter nom user -->
+</head>
+<!-- Navbar -->
+<div th:replace="~{fragment/fragment-enteteConnecte :: frag-entete}"></div>
+
+
+<body>
+    <div class="container formProfil">
+        <form action="" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Pseudo : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Nom : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Prénom : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Email : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Telephone : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Rue : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Code postal : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Ville : </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+           
+        </form>
+
+    </div>
+</body>
+
+</html>

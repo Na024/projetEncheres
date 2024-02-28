@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+</head>
+<!-- Navbar -->
+<div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
+<body>
+    <h1>Liste des enchères</h1>
+    <main>
+        <div class="container">
+            <form action="" method="post">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="">Filtres :</label>
+                        <input type="search" class="form-control" placeholder="Le nom de l'article contient ..." />
+
+                    </div>
+                </div>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="">Catégorie :</label>
+                                <select name="select" class="form-select" id="select">
+                                    <option>Toutes</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+                        
+                        <div class="col-md-6 d-md-flex justify-content-md-right align-items-md-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Rechercher</button>
+                        </div>
+                    </div>
+                </form>
+            
+            </form>
+
+        
+        
+        <!-- encheres dispos-->
+        
+            <div class="formEnchere">
+                <img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt="">
+               
+                <form action="" >
+                    <h2><a href="#">Titre</a></h2>
+                    <div>
+                        <label>Prix : </label>
+                    </div>
+                    <div>
+                        <label>Fin de l'enchère : </label>
+
+                    </div>
+                    <div>
+                        <label>Vendeur : </label>
+                    </div>
+                </form>
+
+            </div>
+            
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+.form-control{
+    width: 20vw;
+    border-radius: 15px;
+}
+
+.form-select{
+    width: 15vw;
+    
+}
+.formEnchere, .formVente, .formVentegagnee{
+    display: flex;
+    align-items: center;
+   
+
+    margin: 50px;
+
+}
+.formEnchere{
+    border: solid black;
+    border-radius: 15px;
+    width: 45%;
+}
+
+
+.formVente, .formVente input, .formProfil input, .formVentegagnee input{
+    border: none;
+}
+
+.formEnchere h2{
+    margin: 20px;
+    
+}
+
+.formEnchere img{
+    margin-right: 20px;
+    width: 10vw;
+}
+.formProfil, .connexion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px
+}
+
+.gagnee div{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.buttonCentered {
+    margin: 50px;
+}
