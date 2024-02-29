@@ -2,14 +2,12 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    	<th:block  th:include="~{fragment/fragment-head :: head}"></th:block>
+
     <title>vente remportée</title>
 </head>
 <!-- Navbar -->
-<div th:replace="~{fragment/fragment-enteteConnecte :: frag-entete}"></div>
+<div th:replace="~{fragment/fragment-enteteConnecte :: frag-enteteConnecte}"></div>
 
 <body>
     <h1>Vous avez remporté la vente</h1>

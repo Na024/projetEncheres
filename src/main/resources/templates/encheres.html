@@ -2,15 +2,14 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+	<th:block  th:include="~{fragment/fragment-head :: head}"></th:block>
+
 
     <title>Document</title>
 </head>
 <!-- Navbar -->
 <div th:replace="~{fragment/fragment-entete :: frag-entete}"></div>
+
 
 <body>
     <h1>Liste des enchères</h1>
@@ -55,7 +54,7 @@
             <div class="formEnchere">
                 <img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt="">
                
-                <form action="" >
+                <form action="" method="post">
                     <h2><a href="#">Titre</a></h2>
                     <div>
                         <label>Prix : </label>

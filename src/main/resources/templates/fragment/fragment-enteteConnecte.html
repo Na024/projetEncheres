@@ -1,18 +1,18 @@
 
 <!-- Navbar -->
-<header th:fragment="frag-enteteConnectee">
+<header th:fragment="frag-enteteConnecte">
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
 
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active" aria-current="page" href="/encheres.html">ENI-Enchères</a>
+					<a class="nav-link active" aria-current="page" th:href="@{/encheres}">ENI-Enchères</a>
 				</div>
 				<div class="navbar-nav ml-auto">
-					<a class="nav-link" href="/creerProfil.html">Enchères</a>
-					<a class="nav-link" href="/connexion.html">Vendre un article</a>
-					<a class="nav-link" href="/profil-user.html">Mon profil</a>
-					<a class="nav-link" href="/encheres.html">Déconnexion</a>
+					<a class="nav-link" th:href="@{/encheres}">Enchères</a>
+					<a class="nav-link" th:href="@{/newVente}">Vendre un article</a>
+					<a class="nav-link" hth:href="@{/modifierProfil}">Mon profil</a>
+					<a class="nav-link" th:href="@{/encheres}">Déconnexion</a>
 				</div>
 			</div>
 		</div>
