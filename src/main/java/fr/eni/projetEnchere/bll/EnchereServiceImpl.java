@@ -1,29 +1,30 @@
 package fr.eni.projetEnchere.bll;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
+import fr.eni.projetEnchere.dal.CategorieRepository;
 import fr.eni.projetEnchere.dal.UtilisateurRepository;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 @Service
 public class EnchereServiceImpl implements EnchereService {
-private UtilisateurRepository utilisateurRepository;
+	private UtilisateurRepository utilisateurRepository;
+	private CategorieRepository categorieRepository;
 	
-	public EnchereServiceImpl (UtilisateurRepository utilisateurRepository) {
+	public EnchereServiceImpl (UtilisateurRepository utilisateurRepository , CategorieRepository categorieRepository) {
 		this.utilisateurRepository = utilisateurRepository;
+		this.categorieRepository = categorieRepository;
 	}
 	
-	
-	
-	
-
 	@Override
 	public Utilisateur creerCompte(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException {
 		Utilisateur u = utilisateurRepository.saveUtilisateur (utilisateur);
 		return u;
-		
 	}
 
 	@Override
@@ -35,16 +36,11 @@ private UtilisateurRepository utilisateurRepository;
 	    throw new UtilisateurNotFoundRuntimeException();
 	}
 	
-	
-	
-	
 	@Override
 	public void modifierCompte(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException {
 		utilisateurRepository.saveUtilisateur(utilisateur);
 		
 	}
-
-
 
 	@Override
 	public void supprimerCompte(int noUtilisateur) throws UtilisateurNotFoundRuntimeException {
@@ -52,9 +48,31 @@ private UtilisateurRepository utilisateurRepository;
 		
 	}
 
+	@Override
+	public List<Categorie> getAllCategories() {
+		
+		return categorieRepository.a();
+	}
+
+	
 
 
-
-
+	
+	
+	// CATEGORIE
+	
+	/*
+	 * @Override public Categorie consulterCategorie(int noCategorie) {
+	 * 
+	 * return null; }
+	 */
+	/*
+	 * @Autowired public EnchereServiceImpl(CategorieRepository categorieRepository)
+	 * { this.categorieRepository = categorieRepository; }
+	 * 
+	 * 
+	 * @Override public List<Categorie> getAllCategories() { return
+	 * categorieRepository.getAllCategories(); }
+	 */
 
 }

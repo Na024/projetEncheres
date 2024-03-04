@@ -13,10 +13,13 @@ private EnchereService enchereService;
 	}
 
 	
-	@GetMapping("/encheres")
-	public String afficherEncheres () {
-			return "encheres";
-	}
+	
+	/*
+	 * @GetMapping("/encheres") public String afficherEncheres () {
+	 * 
+	 * return "encheres"; }
+	 */
+	 
 	
 	  @GetMapping("/connexion") 
 	  public String afficherConnexion() {

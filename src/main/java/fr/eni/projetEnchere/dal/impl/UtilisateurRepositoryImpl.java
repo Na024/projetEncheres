@@ -1,4 +1,4 @@
-package fr.eni.projetEnchere.dal;
+package fr.eni.projetEnchere.dal.impl;
 
 import java.util.Optional;
 
@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.projetEnchere.bo.Utilisateur;
+import fr.eni.projetEnchere.dal.UtilisateurRepository;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 @Repository
 public class UtilisateurRepositoryImpl implements UtilisateurRepository {

@@ -15,7 +15,7 @@
     <h1>Liste des enchères</h1>
     <main>
         <div class="container">
-            <form action="" method="post">
+            <form action="#" method="post">
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="">Filtres :</label>
@@ -28,9 +28,9 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Catégorie :</label>
-                                <select name="select" class="form-select" id="select">
-                                    <option>Toutes</option>
-                                </select>
+                                 <select name="select" class="form-select" id="select">
+							        <option th:each="c : ${categories}" th:value="${c.noCategorie}" th:text="${c.libelle}" ></option>
+							    </select>
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
             <div class="formEnchere">
                 <img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt="">
                
-                <form action="" method="post">
+                <div action="" method="post">
                     <h2><a href="#">Titre</a></h2>
                     <div>
                         <label>Prix : </label>
@@ -66,7 +66,7 @@
                     <div>
                         <label>Vendeur : </label>
                     </div>
-                </form>
+                </div>
 
             </div>
             
