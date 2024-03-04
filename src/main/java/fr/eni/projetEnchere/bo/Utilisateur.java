@@ -30,7 +30,7 @@ public class Utilisateur implements Serializable{
     private String prenom;
     
     @NotBlank
-    @Pattern(regexp = "^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$")
+    @Pattern(regexp = "([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)")
     private String email;
     
     @NotBlank
@@ -42,8 +42,8 @@ public class Utilisateur implements Serializable{
     private String rue;
     
     @NotBlank
-    @Size (min = 01000, max = 98890)
-    @Pattern (regexp = "^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B)) *([0-9]{3})?$")
+    @Size (min = 5, max = 5)
+    @Pattern (regexp = "((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B)) *([0-9]{3})?")
     private String codePostal;
     
     @NotBlank
@@ -52,7 +52,7 @@ public class Utilisateur implements Serializable{
     
     @NotBlank
     @Size(min = 8, max = 16)
-    @Pattern (regexp = "^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$")
+    @Pattern (regexp = "(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}")
     private String motDePasse;
     
     @NotNull
