@@ -23,17 +23,14 @@ public class UtilisateurDetailService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
 		// Vérifie d'abord si l'utilisateur existe en tant que pseudo
-		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByPseudo(username);
+		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByPseudoOuEmail(username);
 		
 		if (optUtilisateur.isEmpty()) {
-			optUtilisateur = utilisateurRepository.findUtilisateurByEmail(username);
-			if (optUtilisateur.isEmpty()) {
+			
 				throw new UsernameNotFoundException("Utilisateur non trouvé :" +username);
 			}
 			
-		}
 		// Utilisateur trouvé
 		Utilisateur utilisateur = optUtilisateur.get();
 		
