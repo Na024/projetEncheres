@@ -50,6 +50,7 @@ public class EnchereSecurity {
 					.permitAll()
 					.defaultSuccessUrl("/encheres")
 				)
+				//.csrf().disable() 
 				.logout((logout) -> logout.permitAll()
 						.logoutSuccessUrl("/encheres"));
 
@@ -57,7 +58,7 @@ public class EnchereSecurity {
 		}
 	
 	@Bean
-	PasswordEncoder passwordEncoder() {
+	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	}

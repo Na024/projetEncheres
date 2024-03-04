@@ -14,26 +14,39 @@
 
 
 <body>
+		<div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+	
     <div class="container connexion">
-        <form action="" method="post">
+        <form th:action="@{/connexion}" method="post">
+		
+			
             <div class="mb-3">
-                <label for="email" class="form-label">Identifiant :</label>
-                <input type="email" class="form-control" id="email">
+
+                <label class="form-label">Identifiant :</label>
+                <input type="text" class="form-control" name="username">
+
             </div>
+            
             <div class="mb-3">
-                <label for="password1" class="form-label">Mot de passe :</label>
-                <input type="password" class="form-control" id="password">
+                <label class="form-label">Mot de passe :</label>
+                <input type="password" class="form-control" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Connexion</button>
+            
+            <button type="submit" class="btn btn-primary" value="Sign In" >Connexion</button>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="checkbox">
+                <input type="checkbox" class="form-check-input" id="checkbox" value="Sign In">
                 <label class="form-check-label" for="checkbox">Se souvenir de moi </label>
             </div>
-            <label for="#"><a href="#">Mot de passe oublié</a></label>
+            <label for="#"><a href="encheres.html">Mot de passe oublié</a></label>
         
         
         </form>
-        <button><a href="#">Créer un compte</a></button>
+        <button><a href="creerProfil.html">Créer un compte</a></button>
     </div>
     
 </body>

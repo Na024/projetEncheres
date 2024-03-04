@@ -7,15 +7,17 @@ import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 
 public interface UtilisateurRepository {
 
-Optional<Utilisateur> findUtilisateurByPseudo (String pseudo); 
+//  Optional<Utilisateur> findUtilisateurByPseudo (String pseudo); 
 	
-	Optional<Utilisateur> findUtilisateurByEmail (String email);
-	
-	Optional<Utilisateur> findUtilisateurByNoUtilisateur (int	noUtilisateur);
+//	Optional<Utilisateur> findUtilisateurByEmail (String email);
+
+//	Optional<Utilisateur> findUtilisateurByNoUtilisateur (int	noUtilisateur);
 	
 	void supprimerCompte(int noUtilisateur) throws UtilisateurNotFoundRuntimeException;
 
 	Utilisateur saveUtilisateur(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException;
+
+	Optional<Utilisateur> findUtilisateurByPseudoOuEmail(String identifiant);
 	
 	
 	

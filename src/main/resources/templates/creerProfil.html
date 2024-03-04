@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  	<th:block  th:include="~{fragment/fragment-head :: head}"></th:block>
+  	<th:block  th:insert="~{fragment/fragment-head :: head}"></th:block>
 
 
     <title>Inscription</title>
@@ -13,16 +13,23 @@
 <body>
     <h1> Mon profil</h1>
     <div class="container">
-        <form action="" method="post">
+        <form action="/creerProfil" method="post" th:object="${utilisateur}">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div th:replace="~{fragment/fragment-errors :: frag-errors}"></div>
+        
             <div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Pseudo : </label>
-                        <input type="text" class="form-control">
+                        <label for="idPseudo">Pseudo : * </label>
+                        <input id="idPseudo" type="text" class="form-control" th:field="*{pseudo}"/>
+                        <div th:replace="~{fragment/fragment-error :: frag-error('pseudo')}"></div>
+
                     </div>
                     <div class="col-md-6">
-                        <label for="">Nom : </label>
-                        <input type="text" class="form-control">
+                        <label for="idNom">Nom : *</label>
+                        <input id="idNom" type="text" class="form-control" th:field="*{nom}"/>
+                   		<div th:replace="~{fragment/fragment-error :: frag-error('nom')}"></div>
+
                     </div>
                 </div>
                 <!-- se fait avec thymeleaf donc juste besoin d'un ? ou pas comme ya les regex ?? -->
@@ -30,45 +37,60 @@
                 
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Prénom : </label>
-                        <input type="text" class="form-control">
+                        <label for="idPrenom">Prénom : *</label>
+                        <input id="idPrenom" type="text" class="form-control" th:field="*{prenom}"/>
+                    	 <div th:replace="~{fragment/fragment-error :: frag-error('prenom')}"></div>
+
                     </div>
                     <div class="col-md-6">
-                        <label for="">Email : </label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Telephone : </label>
-                        <input type="tel" pattern="[0]{1}[1-9]{1}[0-9]{8}" class="form-control">
-                    </div>
-                
-                    <div class="col-md-6">
-                        <label for="">Rue : </label>
-                        <input type="text" class="form-control">
+                        <label for="idEmail">Email : *</label>
+                        <input id="idEmail" type="text" pattern="^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$" class="form-control" th:field="*{email}"/>
+                         <div th:replace="~{fragment/fragment-error :: frag-error('email')}"></div>
+                   
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Code postal : </label>
-                        <input type="text" class="form-control">
-                    </div>
+                        <label for="idTelephone"> Telephone : *</label>
+                        <input id="idTelephone" type="tel" pattern="[0]{1}[1-9]{1}[0-9]{8}" class="form-control" th:field="*{telephone}"/>
+                        <div th:replace="~{fragment/fragment-error :: frag-error('telephone')}"></div>
+    
+    
+                   </div>
                 
                     <div class="col-md-6">
-                        <label for="">Ville : </label>
-                        <input type="text" class="form-control">
+                        <label for="idRue">Rue : *</label>
+                        <input id="idRue" type="text" class="form-control" th:field="*{rue}"/>
+                        <div th:replace="~{fragment/fragment-error :: frag-error('rue')}"></div>
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Mot de passe : </label>
-                        <input type="text" class="form-control">
+                        <label for="idCodePostal">Code postal : *</label>
+                        <input id="idCodePostal" type="text" pattern="^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B)) *([0-9]{3})?$"  class="form-control" th:field="*{codePostal}"/>
+                         <div th:replace="~{fragment/fragment-error :: frag-error('codePostal')}"></div>
+
+                   </div>
+                
+                    <div class="col-md-6">
+                        <label for="idVille">Ville : *</label>
+                        <input id="idVille" type="text" class="form-control" th:field="*{ville}"/>
+                         <div th:replace="~{fragment/fragment-error :: frag-error('ville')}"></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="idMotDePasse">Mot de passe : *</label>
+                        <input id="idMotDePasse" type="text" pattern="^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$"  class="form-control" th:field="*{motDePasse}"/>
+						<div th:replace="~{fragment/fragment-error :: frag-error('motDePasse')}"></div>
+
                     </div>
                 
                     <div class="col-md-6">
-                        <label for="">Confirmation </label>
-                        <input type="text" class="form-control">
+                        <label for="">Confirmation *</label>
+                        <input type="text" class="form-control"/>
                     </div>
                 </div>
                 
@@ -76,13 +98,15 @@
                     <div class="col-md-6">
                 
                 
-                        <label for="">Crédit </label>
-                        <input type="text" class="form-control">
+                        <label for="idCredit">Crédit *</label>
+                        <input id="idCredit" type="text" class="form-control" th:field="*{credit}"/>
+                        <div th:replace="~{fragment/fragment-error :: frag-error('credit')}"></div>
+                   
                     </div>
                 </div>
             </div>
     <div class="row justify-content-center ">
-        <button class="buttonCentered" type="submit"><a href="#">Créer</a> </button>
+        <button class="buttonCentered" type="submit">Créer</button>
         <button class="buttonCentered" type="reset"><a href="encheres.html">Annuler</a></button>
     </div>
    

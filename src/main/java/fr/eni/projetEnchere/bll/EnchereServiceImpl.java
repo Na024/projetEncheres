@@ -1,9 +1,14 @@
 package fr.eni.projetEnchere.bll;
 
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.eni.projetEnchere.bo.Categorie;
@@ -13,27 +18,59 @@ import fr.eni.projetEnchere.dal.UtilisateurRepository;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 @Service
 public class EnchereServiceImpl implements EnchereService {
+
 	private UtilisateurRepository utilisateurRepository;
 	private CategorieRepository categorieRepository;
+	private BCryptPasswordEncoder passwordEncoder;
 	
-	public EnchereServiceImpl (UtilisateurRepository utilisateurRepository , CategorieRepository categorieRepository) {
+	
+	public EnchereServiceImpl(UtilisateurRepository utilisateurRepository, CategorieRepository categorieRepository,
+			BCryptPasswordEncoder passwordEncoder) {
+		super();
 		this.utilisateurRepository = utilisateurRepository;
 		this.categorieRepository = categorieRepository;
-	}
-	
-	@Override
-	public Utilisateur creerCompte(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException {
-		Utilisateur u = utilisateurRepository.saveUtilisateur (utilisateur);
-		return u;
+		this.passwordEncoder = passwordEncoder;
 	}
 
+
 	@Override
-	public Utilisateur consulterCompteParId(int noUtilisateur) throws UtilisateurNotFoundRuntimeException {
-	    Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByNoUtilisateur(noUtilisateur);
-	    if (optUtilisateur.isPresent()) {
-	    	return optUtilisateur.get();
+	public Utilisateur creerCompte(Utilisateur utilisateur) {
+	    try {
+	    	// Hachez le mot de passe avec bcrypt avant de le stocker dans la base de données
+	    	 String motDePasseEncode = passwordEncoder.encode(utilisateur.getMotDePasse());
+	         utilisateur.setMotDePasse(motDePasseEncode);
+	      // Enregistrez l'utilisateur dans la base de données
+	         Utilisateur u = utilisateurRepository.saveUtilisateur(utilisateur);
+	        return u;
+	    } catch (UtilisateurNotFoundRuntimeException e) {
+	        // Gérer l'exception ici, par exemple, en journalisant l'erreur ou en effectuant d'autres actions nécessaires.
+	        e.printStackTrace(); // Imprime la trace de la pile de l'exception
+	        return null; // Ou lancez une nouvelle exception, ou retournez une valeur par défaut, selon votre logique de gestion d'erreur.
 	    }
-	    throw new UtilisateurNotFoundRuntimeException();
+	}
+
+//	@Override
+//	public Utilisateur consulterCompteParId(int noUtilisateur)  {
+//		try {
+//	    Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByNoUtilisateur(noUtilisateur);
+//	    return optUtilisateur.orElseThrow(NoSuchElementException::new);
+//		}catch (NoSuchElementException e) {
+//			 // Gérer l'exception ici, par exemple, en journalisant l'erreur ou en effectuant d'autres actions nécessaires.
+//	        e.printStackTrace(); // Imprime la trace de la pile de l'exception
+//	        throw new UtilisateurNotFoundRuntimeException(); // Ou lancez une nouvelle exception, selon votre logique de gestion d'erreur.
+//	    }
+//	}
+	
+
+	public Utilisateur findUtilisateurByPseudoOuEmail(String identifiant)  {
+		try {
+	    Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByPseudoOuEmail(identifiant);
+	    return optUtilisateur.orElseThrow(NoSuchElementException::new);
+		}catch (NoSuchElementException e) {
+			 // Gérer l'exception ici, par exemple, en journalisant l'erreur ou en effectuant d'autres actions nécessaires.
+	        e.printStackTrace(); // Imprime la trace de la pile de l'exception
+	        throw new UtilisateurNotFoundRuntimeException(); // Ou lancez une nouvelle exception, selon votre logique de gestion d'erreur.
+	    }
 	}
 	
 	@Override

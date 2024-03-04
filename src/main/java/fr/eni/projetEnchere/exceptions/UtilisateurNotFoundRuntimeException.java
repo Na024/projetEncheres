@@ -1,5 +1,5 @@
  package fr.eni.projetEnchere.exceptions;
 
-public class UtilisateurNotFoundRuntimeException extends Exception{
+public class UtilisateurNotFoundRuntimeException extends RuntimeException{
 
 }
