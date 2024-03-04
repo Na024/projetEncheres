@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.eni.projetEnchere.bll.EnchereService;
 import fr.eni.projetEnchere.bo.Utilisateur;
-import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 import jakarta.validation.Valid;
 @Controller
 public class UtilisateurController {
@@ -49,7 +48,14 @@ private BCryptPasswordEncoder passwordEncoder;
 	  @PostMapping("/creerProfil")
 	    public String creerUnProfil(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
 	            BindingResult bindingResult) {
-	        
+		  
+		  // Valider la confirmation de mot de passe
+		    if (!utilisateur.getMotDePasse().equals(utilisateur.getConfirmMotDePasse())) {
+		    	System.err.println("errrrrrrrrrrrrrr");
+		    	System.out.println(utilisateur);
+		        bindingResult.rejectValue("confirmMotDePasse","Confirmation incorrecte.");
+		    }  
+		  
 	        // si des erreurs sont détectées, on revient sur le formulaire
 	        if (bindingResult.hasErrors()) {
 	            return "creerProfil";

@@ -26,11 +26,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	
-<<<<<<< HEAD
 	implementation 'com.microsoft.sqlserver:mssql-jdbc:10.2.2.jre17'
-=======
 	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
->>>>>>> devswan
 }
  
 tasks.named('test') {

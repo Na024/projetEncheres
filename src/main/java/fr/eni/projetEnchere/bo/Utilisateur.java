@@ -19,6 +19,7 @@ public class Utilisateur implements Serializable{
     
     @NotBlank
     @Size(min = 2, max = 30)
+    @Pattern(regexp = "[a-zA-Z0-9]{2,30}")
     private String pseudo;
     
     @NotBlank
@@ -55,6 +56,9 @@ public class Utilisateur implements Serializable{
     @Pattern (regexp = "(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}")
     private String motDePasse;
     
+    @NotBlank
+    private String confirmMotDePasse;
+    
     @NotNull
     @Min (1)
     @Max (999)
@@ -71,7 +75,7 @@ public class Utilisateur implements Serializable{
     
     
     public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal,
-            String ville, String motDePasse, Integer credit, boolean administrateur, List<ArticleVendu> achats,
+            String ville, String motDePasse, String confirmMotDePasse, Integer credit, boolean administrateur, List<ArticleVendu> achats,
             List<ArticleVendu> ventes, List<Enchere> enchères) {
         super();
         this.pseudo = pseudo;
@@ -83,6 +87,7 @@ public class Utilisateur implements Serializable{
         this.codePostal = codePostal;
         this.ville = ville;
         this.motDePasse = motDePasse;
+        this.confirmMotDePasse = confirmMotDePasse;
         this.credit = credit;
         this.administrateur = administrateur;
         this.achats = achats;
@@ -92,7 +97,7 @@ public class Utilisateur implements Serializable{
 
 
     public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-            String rue, String codePostal, String ville, String motDePasse, Integer credit, boolean administrateur,
+            String rue, String codePostal, String ville, String motDePasse, String confirmMotDePasse,Integer credit, boolean administrateur,
             List<ArticleVendu> achats, List<ArticleVendu> ventes, List<Enchere> enchères) {
         super();
         this.noUtilisateur = noUtilisateur;
@@ -105,6 +110,7 @@ public class Utilisateur implements Serializable{
         this.codePostal = codePostal;
         this.ville = ville;
         this.motDePasse = motDePasse;
+        this.confirmMotDePasse = confirmMotDePasse;
         this.credit = credit;
         this.administrateur = administrateur;
         this.achats = achats;
@@ -137,6 +143,8 @@ public class Utilisateur implements Serializable{
         builder.append(ville);
         builder.append(", motDePasse=");
         builder.append(motDePasse);
+        builder.append(", confirmMotDePasse=");
+        builder.append(confirmMotDePasse);
         builder.append(", credit=");
         builder.append(credit);
         builder.append(", administrateur=");
@@ -233,6 +241,14 @@ public class Utilisateur implements Serializable{
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
+    
+    public String getConfirmMotDePasse() {
+        return confirmMotDePasse;
+    }
+    public void setConfirmMotDePasse(String confirmMotDePasse) {
+        this.confirmMotDePasse = confirmMotDePasse;
+    }
+    
     public Integer getCredit() {
         return credit;
     }
