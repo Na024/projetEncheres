@@ -1,100 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
-   	<th:block  th:include="~{fragment/fragment-head :: head}"></th:block>
+	<th:block th:include="~{fragment/fragment-head :: head}"></th:block>
 
 
-    <title>Mon profil</title>
+
+
+	<title>Mon profil</title>
 </head>
 <!-- Navbar -->
 <div th:replace="~{fragment/fragment-enteteConnecte :: frag-enteteConnecte}"></div>
 
+
 <body>
-    <h1>Mon profil</h1>
-    <div class="container formProfil">
-        <form action="" method="post">
-        <div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="">Pseudo : </label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label for="">Nom : </label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <!-- se fait avec thymeleaf donc juste besoin d'un ? ou pas comme ya les regex ?? -->
-        
-        
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="">Prénom : </label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label for="">Email : </label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="">Telephone : </label>
-                    <input type="tel" pattern="[0]{1}[1-9]{1}[0-9]{8}" class="form-control">
-                </div>
-        
-                <div class="col-md-6">
-                    <label for="">Rue : </label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="">Code postal : </label>
-                    <input type="text" class="form-control">
-                </div>
-        
-                <div class="col-md-6">
-                    <label for="">Ville : </label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="">Mot de passe actuel: </label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="">Mot de passe : </label>
-                    <input type="text" class="form-control">
-                </div>
-        
-                <div class="col-md-6">
-                    <label for="">Confirmation :</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        
-            <div class="row">
-                <div class="col-md-6">
-        
-        
-                    <label for="">Crédit </label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <button style="margin: 20px;"  type="submit"><a href="#">Enregistrer</a> </button>
-            <button style="margin: 20px;" type="reset"><a href="encheres.html">Supprimer mon compte</a></button>
-        </div>     
-    </form>
-    
-    </div>
+	<h1>Mon profil</h1>
+	<div class="container formProfil">
+		<form action="/modifierProfil" method="post" th:object="${utilisateur}">
+			<div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="idPseudo">Pseudo : </label>
+						<input id="idPseudo" type="text" pattern="[a-zA-Z0-9]{2,30}" placeholder="ex : Poppy14"
+							class="form-control" />
+					</div>
+					<div class="col-md-6">
+						<label for="">Nom : </label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<!-- se fait avec thymeleaf donc juste besoin d'un ? ou pas comme ya les regex ?? -->
+				<div class="row">
+					<div class="col-md-6">
+						<label for="">Prénom : </label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="col-md-6">
+						<label for="">Email : </label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="">Telephone : </label>
+						<input type="tel" pattern="[0]{1}[1-9]{1}[0-9]{8}" class="form-control">
+					</div>
+					<div class="col-md-6">
+						<label for="">Rue : </label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="">Code postal : </label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="col-md-6">
+						<label for="">Ville : </label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="">Mot de passe actuel: </label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="">Mot de passe : </label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="col-md-6">
+						<label for="">Confirmation :</label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="">Crédit </label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<button style="margin: 20px;" type="submit"><a href="profilUser.html">Enregistrer</a> </button>
+				<button style="margin: 20px;" type="reset"><a href="encheres.html">Supprimer mon compte</a></button>
+			</div>
+		</form>
+	</div>
+	<script th:src="@{js/app.js}"></script>
 </body>
 
-</html>
 
+</html>
