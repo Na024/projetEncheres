@@ -1,11 +1,10 @@
 package fr.eni.projetEnchere.controller;
 
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +14,6 @@ import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.dal.CategorieRepository;
 import fr.eni.projetEnchere.dal.EnchereRepository;
-import jakarta.validation.Valid;
 
 @Controller
 public class EnchereController {
@@ -32,8 +30,6 @@ public class EnchereController {
 	private CategorieRepository categorieRepository;
 	private EnchereRepository enchereRepository; 
 
-	
-
 
 		public EnchereController(EnchereService enchereService, CategorieRepository categorieRepository,
 			EnchereRepository enchereRepository) {
@@ -46,6 +42,8 @@ public class EnchereController {
 
 		@GetMapping("/encheres")
         public String listeEncheres(Model model) {
+			
+
         	List<Categorie> categories = this.enchereService.getAllCategories();
         	System.out.println(categories);
         	model.addAttribute("categories", categories);
@@ -87,8 +85,7 @@ public class EnchereController {
 
 			return "redirect:/encheres";
 		}
-	
-	
+
     
 	/*
 	 * 

@@ -122,6 +122,20 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 //	}
 
 	
+		@Override
+	    public Optional<Utilisateur> consulterCompteParId(int noUtilisateur)  {
+	        String sql = "select pseudo, nom, prenom, email, telephone, rue, code_postal, ville from utilisateurs where no_utilisateur = ? ";
+	        Optional<Utilisateur> optUtilisateur = null;
+	        try {
+	            Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Utilisateur>(Utilisateur.class), noUtilisateur);
+	            optUtilisateur = Optional.of(utilisateur);
+	        }catch(EmptyResultDataAccessException exc) {
+	            optUtilisateur = Optional.empty();
+	        }
+	        return optUtilisateur;
+	    }
+		
+		
 	
 	@Override
 	public void supprimerCompte(int noUtilisateur) throws UtilisateurNotFoundRuntimeException  {

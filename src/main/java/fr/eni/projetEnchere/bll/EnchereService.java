@@ -16,7 +16,8 @@ public interface EnchereService {
 		
 		void supprimerCompte (int noUtilisateur) throws UtilisateurNotFoundRuntimeException;
 		
-		// Utilisateur consulterCompteParId (int noUtilisateur) throws UtilisateurNotFoundRuntimeException;
+		Utilisateur consulterCompteParId (int noUtilisateur) throws UtilisateurNotFoundRuntimeException;
+	
 		public Utilisateur findUtilisateurByPseudoOuEmail(String identifiant) ;
 
 		

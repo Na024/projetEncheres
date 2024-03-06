@@ -55,19 +55,16 @@ public class EnchereServiceImpl implements EnchereService {
 	    }
 	}
 
-//	@Override
-//	public Utilisateur consulterCompteParId(int noUtilisateur)  {
-//		try {
-//	    Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByNoUtilisateur(noUtilisateur);
-//	    return optUtilisateur.orElseThrow(NoSuchElementException::new);
-//		}catch (NoSuchElementException e) {
-//			 // Gérer l'exception ici, par exemple, en journalisant l'erreur ou en effectuant d'autres actions nécessaires.
-//	        e.printStackTrace(); // Imprime la trace de la pile de l'exception
-//	        throw new UtilisateurNotFoundRuntimeException(); // Ou lancez une nouvelle exception, selon votre logique de gestion d'erreur.
-//	    }
-//	}
+	@Override
+	public Utilisateur consulterCompteParId(int noUtilisateur)  {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepository.consulterCompteParId(noUtilisateur);
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		}
+		throw new UtilisateurNotFoundRuntimeException();
+	}
 	
-
+	@Override
 	public Utilisateur findUtilisateurByPseudoOuEmail(String identifiant)  {
 		try {
 	    Optional<Utilisateur> optUtilisateur = utilisateurRepository.findUtilisateurByPseudoOuEmail(identifiant);

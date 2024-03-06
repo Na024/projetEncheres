@@ -11,7 +11,9 @@ public interface UtilisateurRepository {
 	
 //	Optional<Utilisateur> findUtilisateurByEmail (String email);
 
-//	Optional<Utilisateur> findUtilisateurByNoUtilisateur (int	noUtilisateur);
+//	Optional<Utilisateur> findUtilisateurByNoUtilisateur (int noUtilisateur);
+	
+	Optional<Utilisateur> consulterCompteParId(int noUtilisateur);
 	
 	void supprimerCompte(int noUtilisateur) throws UtilisateurNotFoundRuntimeException;
 
