@@ -2,86 +2,94 @@
 <html lang="fr">
 
 <head>
-   	<th:block  th:include="~{fragment/fragment-head :: head}"></th:block>
+	<th:block th:include="~{fragment/fragment-head :: head}"></th:block>
 
 
-    <title>Profil</title> <!-- rajouter nom user -->
+	<title>Profil</title> <!-- rajouter nom user -->
 </head>
 <!-- Navbar -->
 <div th:replace="~{fragment/fragment-enteteConnecte :: frag-enteteConnecte}"></div>
 
 
 <body>
-    <div class="container formProfil">
-        <form action="" method="post">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Pseudo : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Nom : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Prénom : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Email : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Telephone : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Rue : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Code postal : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Ville : </label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-           
-        </form>
+	<div class="container formProfil">
+		<div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="idPseudo">Pseudo : </label>
 
-    </div>
+				</div>
+				<div class="col-md-6">
+					<input id="idPseudo" type="text" class="form-control" th:value="${utilisateur.pseudo}" disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Nom : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idNom" type="text" class="form-control" th:value="${utilisateur.nom}" disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Prénom : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idPrenom" type="text" class="form-control" th:value="${utilisateur.prenom}" disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Email : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idEmail" type="text" class="form-control" th:value="${utilisateur.email}" disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Telephone : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idTelephone" type="text" class="form-control" th:value="${utilisateur.telephone}"
+						disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Rue : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idRue" type="text" class="form-control" th:value="${utilisateur.rue}" disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Code postal : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idCodePstal" type="text" class="form-control" th:value="${utilisateur.codePostal}"
+						disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">Ville : </label>
+				</div>
+				<div class="col-md-6">
+					<input id="idVille" type="text" class="form-control" th:value="${utilisateur.ville}" disabled />
+				</div>
+			</div>
+
+		</div>
+
+			<div class="row justify-content-center">
+				<button style="margin: 20px;" ><a href="/modifierProfil">Modifier</a> </button>
+				<button style="margin: 20px;" ><a href="/encheres">Back</a></button>
+			</div>
+
+	</div>
 </body>
 
 </html>
