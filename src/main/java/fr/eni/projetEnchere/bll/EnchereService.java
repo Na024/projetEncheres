@@ -2,6 +2,7 @@ package fr.eni.projetEnchere.bll;
 
 import java.util.List;
 
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
@@ -21,6 +22,8 @@ public interface EnchereService {
 		
 		// Méthode article-enchère
 		
+		ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu);
+		
 		//List<Enchere> consulterEncheres ();
 		
 		//void rechercherArticle (String nomArticle, Categorie categorieArticle);
@@ -35,8 +38,8 @@ public interface EnchereService {
 		
 		
 		// Méthode catégorie
-//		Categorie consulterCategorie (int noCategorie);
 
 		List<Categorie> getAllCategories();
+		
 		
 }

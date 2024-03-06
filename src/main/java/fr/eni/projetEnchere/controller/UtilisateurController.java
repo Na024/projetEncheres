@@ -1,5 +1,7 @@
 package fr.eni.projetEnchere.controller;
 
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.eni.projetEnchere.bll.EnchereService;
+import fr.eni.projetEnchere.bo.ArticleVendu;
+import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 import jakarta.validation.Valid;
@@ -77,10 +81,9 @@ private BCryptPasswordEncoder passwordEncoder;
 	  public String modifierProfil() {
 	  return "modifierProfil"; 
 	  }
-	  @GetMapping("/newVente") 
-	  public String newVente() {
-	  return "newVente"; 
-	  }
+		
+		
+		
 	  
 	  @GetMapping("/profilUser") 
 	  public String profilUser() {

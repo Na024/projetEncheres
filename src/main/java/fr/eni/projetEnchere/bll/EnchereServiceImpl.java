@@ -11,27 +11,33 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.CategorieRepository;
+import fr.eni.projetEnchere.dal.EnchereRepository;
 import fr.eni.projetEnchere.dal.UtilisateurRepository;
+import fr.eni.projetEnchere.dal.impl.EnchereRepositoryImpl;
+import fr.eni.projetEnchere.exceptions.ArticleNotFoundRuntimeException;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 @Service
 public class EnchereServiceImpl implements EnchereService {
 
 	private UtilisateurRepository utilisateurRepository;
+	private EnchereRepository enchereRepository;
 	private CategorieRepository categorieRepository;
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	
-	public EnchereServiceImpl(UtilisateurRepository utilisateurRepository, CategorieRepository categorieRepository,
-			BCryptPasswordEncoder passwordEncoder) {
+
+	public EnchereServiceImpl(UtilisateurRepository utilisateurRepository, EnchereRepository enchereRepository,
+			CategorieRepository categorieRepository, BCryptPasswordEncoder passwordEncoder) {
 		super();
 		this.utilisateurRepository = utilisateurRepository;
+		this.enchereRepository = enchereRepository;
 		this.categorieRepository = categorieRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
-
 
 	@Override
 	public Utilisateur creerCompte(Utilisateur utilisateur) {
@@ -91,8 +97,40 @@ public class EnchereServiceImpl implements EnchereService {
 		return categorieRepository.a();
 	}
 
+
+	@Override
+	public ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu) {
+		ArticleVendu article = enchereRepository.saveArticleVendu(articleVendu);
+		
+		System.out.println("D");
+
+		return article;
+		
+		/*
+		 * try { //enregistrer article dans bdd ArticleVendu article =
+		 * enchereRepository.saveArticleVendu(articleVendu); System.out.println("E");
+		 * 
+		 * return article; } catch (ArticleNotFoundRuntimeException e) {
+		 * System.out.println("F");
+		 * 
+		 * // Gérer l'exception ici, par exemple, en journalisant l'erreur ou en
+		 * effectuant d'autres actions nécessaires. e.printStackTrace(); // Imprime la
+		 * trace de la pile de l'exception System.out.println("G");
+		 * 
+		 * return null; // Ou lancez une nouvelle exception, ou retournez une valeur par
+		 * défaut, selon votre logique de gestion d'erreur. }
+		 */
+		
+
+		
+	}
+
 	
 
+
+	
+	
+	
 
 	
 	
