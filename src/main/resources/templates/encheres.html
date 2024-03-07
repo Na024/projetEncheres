@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-	<th:block  th:include="~{fragment/fragment-head :: head}"></th:block>
+	<th:block  th:insert ="~{fragment/fragment-head :: head}"></th:block>
 
 
     <title>Document</title>
@@ -15,64 +15,61 @@
     <h1>Liste des enchères</h1>
     <main>
         <div class="container">
-            <form action="#" method="post">
+            <form action="/encheres" method="get">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="">Filtres :</label>
-                        <input type="search" class="form-control" placeholder="Le nom de l'article contient ..." />
-
+                        <label for="motCle">Filtres :</label>
+                        <input  type="search" class="form-control" id= "motCle" name= "motCle" placeholder="Le nom de l'article contient ..." />
                     </div>
                 </div>
-                <form action="" method="post">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="">Catégorie :</label>
-                                 <select name="select" class="form-select" id="select">
-							        <option th:each="c : ${categories}" th:value="${c.noCategorie}" th:text="${c.libelle}" ></option>
-							    </select>
-                            </div>
-                        </div>
-
-
-
-
-
-                        
-                        <div class="col-md-6 d-md-flex justify-content-md-right align-items-md-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Rechercher</button>
+               
+               	<div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="noCategorie">Catégorie :</label>
+                             <select name="noCategorie" class="form-select" id="noCategorie">
+						        <option th:each="c : ${categories}" th:value="${c.noCategorie}" th:text="${c.libelle}" ></option>
+						    </select>
                         </div>
                     </div>
-                </form>
-            
+                       
+                    <div class="col-md-6 d-md-flex justify-content-md-right align-items-md-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Rechercher</button>
+                    </div>
+                </div>
             </form>
-
-        
-        
-        <!-- encheres dispos-->
-        
-            <div class="formEnchere">
-                <img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt="">
+            
+           
+      
+  
+        <div class="container">
+            <div class="formEnchere" th:each="a : ${articleVendus}">
+				<div class="text-center">
+                	<img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt="">
                
-                <div action="" method="post">
-                    <h2><a href="#">Titre</a></h2>
-                    <div>
-                        <label>Prix : </label>
+                	<div action="" method="post">
+                    	<h2><a href="/detailVente" th:text="${a.nomArticle}"></a> </h2>
+                   		<div>
+                        	<label>Prix : </label>
+                        	<span th:text="${a.miseAPrix}"></span>
                     </div>
                     <div>
                         <label>Fin de l'enchère : </label>
-
+                        <span th:text="${a.dateFinEncheres}"></span>
                     </div>
                     <div>
                         <label>Vendeur : </label>
+                        <span><a href="/consulterProfil"  th:text="${a.getVendeur.pseudo}"></a></span>
                     </div>
                 </div>
 
             </div>
             
         </div>
-
-
+          </div>
+        </div>
+    </div>
+		   
     </main>
 
 </body>

@@ -39,9 +39,6 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
 		@Override
 		public Optional<Utilisateur> findUtilisateurByPseudoOuEmail(String identifiant) {
-			System.out.println("aaaa");
-			System.err.println(identifiant);
-			System.out.println("bbbb");
 	    String sql = "SELECT * FROM utilisateurs WHERE pseudo = :identifiant";
 	    
 	    Optional<Utilisateur> optUtilisateur = null;
@@ -65,6 +62,10 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 	    return optUtilisateur;
 	}
 
+		// afficher les article
+
+		
+		
 		
 
 //		@Override

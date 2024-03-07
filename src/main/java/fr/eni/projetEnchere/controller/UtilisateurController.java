@@ -69,10 +69,7 @@ public class UtilisateurController {
 		return "connexion";
 	}
 
-	@GetMapping("/detailVente")
-	public String detailVente() {
-		return "detailVente";
-	}
+	
 
 	@GetMapping("/modifierProfil")
 	public String modifierProfil() {

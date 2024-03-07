@@ -11,9 +11,11 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.CategorieRepository;
+import fr.eni.projetEnchere.dal.EnchereRepository;
 import fr.eni.projetEnchere.dal.UtilisateurRepository;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 @Service
@@ -22,15 +24,18 @@ public class EnchereServiceImpl implements EnchereService {
 	private UtilisateurRepository utilisateurRepository;
 	private CategorieRepository categorieRepository;
 	private BCryptPasswordEncoder passwordEncoder;
+	private EnchereRepository enchereRepository;
 	
 	
 	public EnchereServiceImpl(UtilisateurRepository utilisateurRepository, CategorieRepository categorieRepository,
-			BCryptPasswordEncoder passwordEncoder) {
+			BCryptPasswordEncoder passwordEncoder, EnchereRepository enchereRepository) {
 		super();
 		this.utilisateurRepository = utilisateurRepository;
 		this.categorieRepository = categorieRepository;
 		this.passwordEncoder = passwordEncoder;
+		this.enchereRepository = enchereRepository;
 	}
+
 
 
 	@Override
@@ -89,7 +94,11 @@ public class EnchereServiceImpl implements EnchereService {
 	}
 
 	
-
+	@Override
+	public List<ArticleVendu> findArticleByMotCleAndCategorie(String motCle, int noCategorie) {
+		List<ArticleVendu> liste  = enchereRepository.findArticleByMotCleAndCategorie(motCle, noCategorie);
+		return liste;
+	}
 
 	
 	
