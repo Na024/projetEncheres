@@ -99,30 +99,27 @@ public class EnchereServiceImpl implements EnchereService {
 	public ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu) {
 		ArticleVendu article = enchereRepository.saveArticleVendu(articleVendu);
 		
-		System.out.println("D");
 
 		return article;
 		
-		/*
-		 * try { //enregistrer article dans bdd ArticleVendu article =
-		 * enchereRepository.saveArticleVendu(articleVendu); System.out.println("E");
-		 * 
-		 * return article; } catch (ArticleNotFoundRuntimeException e) {
-		 * System.out.println("F");
-		 * 
-		 * // Gérer l'exception ici, par exemple, en journalisant l'erreur ou en
-		 * effectuant d'autres actions nécessaires. e.printStackTrace(); // Imprime la
-		 * trace de la pile de l'exception System.out.println("G");
-		 * 
-		 * return null; // Ou lancez une nouvelle exception, ou retournez une valeur par
-		 * défaut, selon votre logique de gestion d'erreur. }
-		 */
 		
 
 		
 	}
 
-	
+	@Override
+	public Categorie consulterCategorieParId(int noCategorie) {
+		Optional<Categorie> optCategorie = categorieRepository.consulterCategorieParId(noCategorie);
+		
+		/*
+		 * if (optCategorie.isPresent()) { return optCategorie.get(); } throw new
+		 * CategorieNotFoundRuntimeException();
+		 */
+		
+		return optCategorie.orElseThrow(NoSuchElementException::new);
+		
+	}
+
 
 
 	

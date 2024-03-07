@@ -41,13 +41,17 @@ public class EnchereRepositoryImpl implements EnchereRepository{
 
 	@Override
     public ArticleVendu saveArticleVendu(ArticleVendu articleVendu) throws ArticleNotFoundRuntimeException {
-        if (articleVendu.getNoArticle()==null || articleVendu.getNoArticle()== 0) {
+		if (articleVendu.getVendeur() == null) {
+	        throw new IllegalArgumentException("Le vendeur de l'article doit être spécifié.");
+	    }
+		
+		if (articleVendu.getNoArticle()==null || articleVendu.getNoArticle()== 0) {
             // Ajout nouvel article
-			System.out.println("H");
 
         String sql = "INSERT into ARTICLES_VENDUS (nom_article, description, date_debut_encheres,date_fin_encheres, prix_initial,prix_vente,no_utilisateur,no_categorie)"
                     +" values ( :nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :prix_vente, :no_utilisateur, :no_categorie)";
-        System.out.println("I");
+        System.out.println("Generated SQL: " + sql);
+
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue ("nom_article",articleVendu.getNomArticle());
         parameterSource.addValue ("description",articleVendu.getDescription());
@@ -55,16 +59,16 @@ public class EnchereRepositoryImpl implements EnchereRepository{
         parameterSource.addValue ("date_fin_encheres",articleVendu.getDateFinEncheres());
         parameterSource.addValue ("prix_initial",articleVendu.getMiseAPrix());
         parameterSource.addValue ("prix_vente",articleVendu.getPrixVente());
-        parameterSource.addValue ("no_utilisateur",articleVendu.getVendeur());
+        parameterSource.addValue ("no_utilisateur",articleVendu.getVendeur().getNoUtilisateur());
         parameterSource.addValue ("no_categorie",articleVendu.getCategorieArticle());
-        
+        System.out.println("Article : " + articleVendu);
+        System.out.println("Vendeur : " + articleVendu.getAcheteur() );
         //Le conteneur qui va recevoir la clé primaire
         //générée par la base de données
-        System.out.println("J");
         KeyHolder keyHolder = new GeneratedKeyHolder();
         
-        namedParameterjdbcTemplate.update(sql, parameterSource, keyHolder, 
-                new String[] {"no_article"});
+        namedParameterjdbcTemplate.update(sql, parameterSource, keyHolder);
+
         
         
         articleVendu.setNoArticle(keyHolder.getKey().intValue());

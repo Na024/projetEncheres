@@ -1,6 +1,7 @@
 package fr.eni.projetEnchere.bll;
 
 import java.util.List;
+import java.util.Optional;
 
 import fr.eni.projetEnchere.bo.ArticleVendu;
 import fr.eni.projetEnchere.bo.Categorie;
@@ -23,7 +24,7 @@ public interface EnchereService {
 		
 		// Méthode article-enchère
 		
-		ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu);
+		ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu); 
 		
 		//List<Enchere> consulterEncheres ();
 		
@@ -42,5 +43,5 @@ public interface EnchereService {
 
 		List<Categorie> getAllCategories();
 		
-		
+		Categorie consulterCategorieParId(int noCategorie);
 }
