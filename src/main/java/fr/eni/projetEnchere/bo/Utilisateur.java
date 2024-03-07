@@ -58,12 +58,13 @@ public class Utilisateur implements Serializable,UserDetails {
 	private String ville;
 
 	@NotBlank
-	@Size(min = 8, max = 16)
-	@Pattern(regexp = "(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}")
-	private String motDePasse;
+//	@Size(min = 8, max = 16)
+//	@Pattern(regexp = "(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}")
+	private String motDePasse;		//motDePasseActuel pour modifierProfil
 
-	@NotBlank
+	//@NotBlank
 	private String confirmMotDePasse;
+	
 
 	@NotNull
 	@Min(1)
