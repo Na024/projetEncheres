@@ -3,7 +3,10 @@ package fr.eni.projetEnchere.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,13 +73,15 @@ public class EnchereController {
       	model.addAttribute("categories", categories);
 		model.addAttribute("articleVendu", new ArticleVendu());
 		model.addAttribute("utilisateur", utilisateur);
-
-      	return "newVente";
-
+		
+		
+	    return "newVente";
       }
 		
 		@PostMapping("/newVente")
-		public String creerEnchere( @ModelAttribute("articleVendu") ArticleVendu articleVendu, @AuthenticationPrincipal Utilisateur connectedUser ) {
+		public String creerEnchere( @ModelAttribute("articleVendu") ArticleVendu articleVendu,
+				
+				@AuthenticationPrincipal Utilisateur connectedUser ) {
 	        
 			/*
 			 * if (bindingResult.hasErrors()) { System.out.println("C");

@@ -1,6 +1,8 @@
 package fr.eni.projetEnchere.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+
+
 import org.springframework.core.convert.converter.Converter;
 
 import fr.eni.projetEnchere.bll.EnchereService;
@@ -17,9 +19,8 @@ public class StringToCategorie implements Converter<String, Categorie>{
 	
 	@Override
 	public Categorie convert(String source) {
-		System.out.println("StringToCategorie.convert()");
+		System.out.println("convert fonctionne");
 		int noCategorie = Integer.parseInt(source);
-		System.out.println(noCategorie);
 		Categorie categorie = enchereService.consulterCategorieParId(noCategorie);
 		System.err.println(categorie);
 		return categorie;

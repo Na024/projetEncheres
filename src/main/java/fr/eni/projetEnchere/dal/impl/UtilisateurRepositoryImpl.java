@@ -39,9 +39,9 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
 		@Override
 		public Optional<Utilisateur> findUtilisateurByPseudoOuEmail(String identifiant) {
-			System.out.println("aaaa");
+			System.out.println("aaaa (utilisateurRepository)");
 			System.err.println(identifiant);
-			System.out.println("bbbb");
+			System.out.println("bbbb (utilisateurRepository)");
 	    String sql = "SELECT * FROM utilisateurs WHERE pseudo = :identifiant";
 	    
 	    Optional<Utilisateur> optUtilisateur = null;
@@ -124,7 +124,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 	
 		@Override
 	    public Optional<Utilisateur> consulterCompteParId(int noUtilisateur)  {
-	        String sql = "select pseudo, nom, prenom, email, telephone, rue, code_postal, ville from utilisateurs where no_utilisateur = ? ";
+	        String sql = "select no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville,credit,mot_de_passe from utilisateurs where no_utilisateur = ? ";
 	        Optional<Utilisateur> optUtilisateur = null;
 	        try {
 	            Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Utilisateur>(Utilisateur.class), noUtilisateur);
@@ -150,16 +150,15 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
 	@Override
 	public Utilisateur saveUtilisateur(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException {
+		System.out.println("UtilisateurRepositoryImpl.saveUtilisateur()");
 		if (utilisateur.getNoUtilisateur() == null){
 			//Ajout d'un nouvel utilisateur
 			String sql = "insert into Utilisateurs (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur)"
 					 +" values (:pseudo, :nom, :prenom, :email, :telephone, :rue, :code_postal, :ville, :mot_de_passe, :credit, :administrateur)";
-			// Hasher le mot de passe avec l'encodeur de mots de passe
-			
-	        String motDePasseEncode = passwordEncoder.encode(utilisateur.getMotDePasse());
-	        utilisateur.setMotDePasse(motDePasseEncode);
+
 
 			MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+			
 			parameterSource.addValue("pseudo", utilisateur.getPseudo());
 			parameterSource.addValue("nom", utilisateur.getNom());
 			parameterSource.addValue("prenom", utilisateur.getPrenom());
@@ -181,10 +180,14 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 			
 			utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
 		}else {
-			String sql = "update Utilisateurs set pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? where no_utilisateur = ?";
-			 // Hasher le mot de passe avec l'encodeur de mots de passe
-	        String motDePasseEncode = passwordEncoder.encode(utilisateur.getMotDePasse());	        
-			int nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), motDePasseEncode, utilisateur.getCredit(), utilisateur.isAdministrateur(), utilisateur.getNoUtilisateur());
+			int nbLignes =0;
+			if(utilisateur.getConfirmMotDePasse().isBlank()) {				
+				String sql = "update Utilisateurs set pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, credit = ?, administrateur = ? where no_utilisateur = ?";     
+				nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getCredit(), utilisateur.isAdministrateur(), utilisateur.getNoUtilisateur());
+			}else {
+				String sql = "update Utilisateurs set pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? ,credit = ?, administrateur = ? where no_utilisateur = ?";     
+				nbLignes = jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(),utilisateur.getMotDePasse(), utilisateur.getCredit(), utilisateur.isAdministrateur(), utilisateur.getNoUtilisateur());				
+			}
 			if(nbLignes == 0) {
 			    throw new UtilisateurNotFoundRuntimeException();
 			}
@@ -203,6 +206,9 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 			user.setPseudo(rs.getString("pseudo"));
 			user.setEmail(rs.getString("email"));
 			user.setMotDePasse(rs.getString("mot_de_passe"));
+			user.setRue(rs.getString("rue"));
+			user.setCodePostal(rs.getString("code_postal"));
+			user.setVille(rs.getString("ville"));
 			System.err.println("UtilisateurRepositoryImpl.UserRowMapper.mapRow()");
 			System.out.println(user);
 			return user;

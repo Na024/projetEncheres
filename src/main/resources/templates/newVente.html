@@ -46,19 +46,19 @@
                 <input type="date" id="dateFin" th:min="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateFinEncheres}" >
             </div>
             <div></div>
-            <fieldset>
+            <fieldset >
                 <legend>Retrait</legend>
                 <div>
                     <label for="rue">Rue</label>
-                    <input type="text" id="rue" th:value="${utilisateur.rue}"disabled>
+                    <input type="text" id="rue" th:value="${#authentication.principal.rue}" disabled>
                 </div>
                 <div>
                     <label for="codePostal">Code postal</label>
-                    <input type="text" id="codePostal" th:value="${utilisateur.codePostal}"disabled>
+                    <input type="text" id="codePostal" th:value="${#authentication.principal.codePostal}" disabled>
                 </div>
                 <div>
                     <label for="ville">Ville</label>
-                    <input type="text" id="ville" th:value="${utilisateur.ville}"disabled>
+                    <input type="text" id="ville" th:value="${#authentication.principal.ville}"disabled>
                 </div>
             </fieldset>
             <button type="submit">Enregistrer</button>

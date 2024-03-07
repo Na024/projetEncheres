@@ -78,6 +78,7 @@ public class EnchereServiceImpl implements EnchereService {
 	
 	@Override
 	public void modifierCompte(Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException {
+		if(!utilisateur.getConfirmMotDePasse().isBlank())  utilisateur.setMotDePasse(passwordEncoder.encode(utilisateur.getMotDePasse()));;	
 		utilisateurRepository.saveUtilisateur(utilisateur);
 		
 	}

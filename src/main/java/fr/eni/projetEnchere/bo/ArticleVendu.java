@@ -1,17 +1,25 @@
 package fr.eni.projetEnchere.bo;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class ArticleVendu {
 	//Attribut
 		private Integer noArticle;
 		private String nomArticle;
 		private String description;
-		private LocalDate dateDebutEncheres;
-		private LocalDate dateFinEncheres;
-		private Integer miseAPrix;
+		
+	    @DateTimeFormat(pattern = "yyyy-MM-dd")
+		private Date dateDebutEncheres;
+	    
+	    @DateTimeFormat(pattern = "yyyy-MM-dd")
+		private Date dateFinEncheres;
+		
+	    private Integer miseAPrix;
 		private Integer prixVente;
 		private String etatVente;
 		
@@ -25,8 +33,10 @@ public class ArticleVendu {
 		//Constructeurs
 		public ArticleVendu() {
 		}
+		
 
-		public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
+
+		public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres, Date dateFinEncheres,
 				Integer miseAPrix, Integer prixVente, String etatVente, Utilisateur acheteur, Utilisateur vendeur,
 				Categorie categorieArticle, Retrait lieuRetrait, List<Enchere> enchères) {
 			super();
@@ -44,8 +54,10 @@ public class ArticleVendu {
 			this.enchères = enchères;
 		}
 
-		public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-				LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, String etatVente, Utilisateur acheteur,
+
+
+		public ArticleVendu(Integer noArticle, String nomArticle, String description, Date dateDebutEncheres,
+				Date dateFinEncheres, Integer miseAPrix, Integer prixVente, String etatVente, Utilisateur acheteur,
 				Utilisateur vendeur, Categorie categorieArticle, Retrait lieuRetrait, List<Enchere> enchères) {
 			super();
 			this.noArticle = noArticle;
@@ -140,19 +152,19 @@ public class ArticleVendu {
 			this.description = description;
 		}
 
-		public LocalDate getDateDebutEncheres() {
+		public Date getDateDebutEncheres() {
 			return dateDebutEncheres;
 		}
 
-		public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
+		public void setDateDebutEncheres(Date dateDebutEncheres) {
 			this.dateDebutEncheres = dateDebutEncheres;
 		}
 
-		public LocalDate getDateFinEncheres() {
+		public Date getDateFinEncheres() {
 			return dateFinEncheres;
 		}
 
-		public void setDateFinEncheres(LocalDate dateFinEncheres) {
+		public void setDateFinEncheres(Date dateFinEncheres) {
 			this.dateFinEncheres = dateFinEncheres;
 		}
 

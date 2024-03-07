@@ -48,8 +48,8 @@ public class EnchereRepositoryImpl implements EnchereRepository{
 		if (articleVendu.getNoArticle()==null || articleVendu.getNoArticle()== 0) {
             // Ajout nouvel article
 
-        String sql = "INSERT into ARTICLES_VENDUS (nom_article, description, date_debut_encheres,date_fin_encheres, prix_initial,prix_vente,no_utilisateur,no_categorie)"
-                    +" values ( :nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :prix_vente, :no_utilisateur, :no_categorie)";
+        String sql = "INSERT into ARTICLES_VENDUS (nom_article, description, date_debut_encheres,date_fin_encheres, prix_initial,no_utilisateur,no_categorie)"
+                    +" values ( :nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :no_utilisateur, :no_categorie)";
         System.out.println("Generated SQL: " + sql);
 
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
@@ -58,11 +58,12 @@ public class EnchereRepositoryImpl implements EnchereRepository{
         parameterSource.addValue ("date_debut_encheres",articleVendu.getDateDebutEncheres());
         parameterSource.addValue ("date_fin_encheres",articleVendu.getDateFinEncheres());
         parameterSource.addValue ("prix_initial",articleVendu.getMiseAPrix());
-        parameterSource.addValue ("prix_vente",articleVendu.getPrixVente());
+        //parameterSource.addValue ("prix_vente",articleVendu.getPrixVente());
         parameterSource.addValue ("no_utilisateur",articleVendu.getVendeur().getNoUtilisateur());
-        parameterSource.addValue ("no_categorie",articleVendu.getCategorieArticle());
+        parameterSource.addValue ("no_categorie",articleVendu.getCategorieArticle().getNoCategorie());
         System.out.println("Article : " + articleVendu);
-        System.out.println("Vendeur : " + articleVendu.getAcheteur() );
+        System.out.println("Vendeur : " + articleVendu.getVendeur().getNoUtilisateur() );
+        
         //Le conteneur qui va recevoir la clé primaire
         //générée par la base de données
         KeyHolder keyHolder = new GeneratedKeyHolder();
