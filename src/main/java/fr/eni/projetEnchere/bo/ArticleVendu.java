@@ -1,17 +1,25 @@
 package fr.eni.projetEnchere.bo;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class ArticleVendu {
 	//Attribut
 		private Integer noArticle;
 		private String nomArticle;
 		private String description;
+		
+	    //@DateTimeFormat(pattern = "yyyy-MM-dd")
 		private LocalDate dateDebutEncheres;
+	    
+	   //@DateTimeFormat(pattern = "yyyy-MM-dd")
 		private LocalDate dateFinEncheres;
-		private Integer miseAPrix;
+		
+	    private Integer miseAPrix;
 		private Integer prixVente;
 		private String etatVente;
 		
@@ -25,6 +33,8 @@ public class ArticleVendu {
 		//Constructeurs
 		public ArticleVendu() {
 		}
+		
+
 
 		public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
 				Integer miseAPrix, Integer prixVente, String etatVente, Utilisateur acheteur, Utilisateur vendeur,
@@ -43,6 +53,8 @@ public class ArticleVendu {
 			this.lieuRetrait = lieuRetrait;
 			this.enchères = enchères;
 		}
+
+
 
 		public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 				LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, String etatVente, Utilisateur acheteur,

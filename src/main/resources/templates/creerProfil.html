@@ -30,7 +30,6 @@
 
 					</div>
 				</div>
-				<!-- se fait avec thymeleaf donc juste besoin d'un ? ou pas comme ya les regex ?? -->
 
 
 				<div class="row">
@@ -46,6 +45,7 @@
 							pattern="^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$"
 							class="form-control" placeholder="ex : poppy_elynn@gmail.com" th:field="*{email}" />
 						<div th:replace="~{fragment/fragment-error :: frag-error('email')}"></div>
+
 
 					</div>
 				</div>
@@ -121,6 +121,7 @@
 		</form>
 	</div>
 	<script th:src="@{js/app.js}"></script>
+>>>>>>> main
 </body>
 
 </html>

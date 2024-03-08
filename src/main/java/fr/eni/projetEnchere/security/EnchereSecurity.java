@@ -35,30 +35,30 @@ public class EnchereSecurity {
 //				;
 //		
 //	}
- 
-		@Bean
-		public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-			http
-				.authorizeHttpRequests((requests) -> requests				
-					//.requestMatchers("/encheres","/creerProfil","/css/*","/fragment/*").permitAll()
-					//.requestMatchers("/newVente","/detailVente","/modifierProfil","/profilUser","/venteEffectuee","/venteGagne").hasRole("UTILISATEUR")
-					//.requestMatchers("/modifierProfil").hasRole("ADMINISTRATEUR")
-					.anyRequest().permitAll()
-				)
-				.formLogin((form) -> form
-					.loginPage("/connexion")
-					.permitAll()
-					.defaultSuccessUrl("/encheres")
-				)
-				//.csrf().disable() 
-				.logout((logout) -> logout.permitAll()
-						.logoutSuccessUrl("/encheres"));
-
-			return http.build();
-		}
+	 
+			@Bean
+			public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+				http
+					.authorizeHttpRequests((requests) -> requests				
+						//.requestMatchers("/encheres","/creerProfil","/css/*","/fragment/*").permitAll()
+						//.requestMatchers("/newVente","/detailVente","/modifierProfil","/profilUser","/venteEffectuee","/venteGagne").hasRole("UTILISATEUR")
+						//.requestMatchers("/modifierProfil").hasRole("ADMINISTRATEUR")
+						.anyRequest().permitAll()
+					)
+					.formLogin((form) -> form
+						.loginPage("/connexion")
+						.permitAll()
+						.defaultSuccessUrl("/encheres")
+					)
+					//.csrf().disable() 
+					.logout((logout) -> logout.permitAll()
+							.logoutSuccessUrl("/encheres"));
 	
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+				return http.build();
+			}
+		
+		@Bean
+		public BCryptPasswordEncoder passwordEncoder() {
+			return new BCryptPasswordEncoder();
+		}
 	}

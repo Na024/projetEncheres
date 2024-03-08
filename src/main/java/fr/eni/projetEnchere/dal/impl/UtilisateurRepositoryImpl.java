@@ -196,6 +196,9 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 			user.setPseudo(rs.getString("pseudo"));
 			user.setEmail(rs.getString("email"));
 			user.setMotDePasse(rs.getString("mot_de_passe"));
+			user.setRue(rs.getString("rue"));
+			user.setCodePostal(rs.getString("code_postal"));
+			user.setVille(rs.getString("ville"));
 			System.err.println("UtilisateurRepositoryImpl.UserRowMapper.mapRow()");
 			System.out.println(user);
 			return user;

@@ -14,27 +14,31 @@ import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.CategorieRepository;
 import fr.eni.projetEnchere.dal.EnchereRepository;
 import fr.eni.projetEnchere.dal.UtilisateurRepository;
+import fr.eni.projetEnchere.dal.impl.EnchereRepositoryImpl;
+import fr.eni.projetEnchere.exceptions.ArticleNotFoundRuntimeException;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 
 @Service
 public class EnchereServiceImpl implements EnchereService {
 
 	private UtilisateurRepository utilisateurRepository;
+	private EnchereRepository enchereRepository;
 	private CategorieRepository categorieRepository;
 	private BCryptPasswordEncoder passwordEncoder;
 
-	private EnchereRepository enchereRepository;
+
 	
 
-	public EnchereServiceImpl(UtilisateurRepository utilisateurRepository, CategorieRepository categorieRepository,
-			BCryptPasswordEncoder passwordEncoder, EnchereRepository enchereRepository) {
+	public EnchereServiceImpl(UtilisateurRepository utilisateurRepository, EnchereRepository enchereRepository,
+			CategorieRepository categorieRepository, BCryptPasswordEncoder passwordEncoder) {
+
 		super();
 		this.utilisateurRepository = utilisateurRepository;
+		this.enchereRepository = enchereRepository;
 		this.categorieRepository = categorieRepository;
 		this.passwordEncoder = passwordEncoder;
-		this.enchereRepository = enchereRepository;
-	}
 
+	}
 
 	@Override
 	public Utilisateur creerCompte(Utilisateur utilisateur) {
@@ -100,11 +104,47 @@ public class EnchereServiceImpl implements EnchereService {
 	}
 
 
+
 	@Override
 	public List<ArticleVendu> findArticleByMotCleAndCategorie(String motCle, int noCategorie) {
 		List<ArticleVendu> liste  = enchereRepository.findArticleByMotCleAndCategorie(motCle, noCategorie);
 		return liste;
 	}
+
+	
+
+
+
+	@Override
+	public ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu) {
+		ArticleVendu article = enchereRepository.saveArticleVendu(articleVendu);
+		
+
+		return article;
+		
+		
+
+		
+	}
+
+	@Override
+	public Categorie consulterCategorieParId(int noCategorie) {
+		Optional<Categorie> optCategorie = categorieRepository.consulterCategorieParId(noCategorie);
+		
+		/*
+		 * if (optCategorie.isPresent()) { return optCategorie.get(); } throw new
+		 * CategorieNotFoundRuntimeException();
+		 */
+		
+		return optCategorie.orElseThrow(NoSuchElementException::new);
+		
+	}
+
+
+
+	
+	
+	
 
 	
 

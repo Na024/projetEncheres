@@ -1,5 +1,7 @@
 package fr.eni.projetEnchere.controller;
 
+
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -130,19 +132,21 @@ public class UtilisateurController {
 
 	
 
-	@GetMapping("/newVente")
-	public String newVente() {
-		return "newVente";
-	}
 
-	@GetMapping("/venteEffectuee")
-	public String venteEffectuee() {
-		return "venteEffectuee";
-	}
-
-	@GetMapping("/venteGagnee")
-	public String venteGagnee() {
-		return "venteGagnee";
-	}
+//	@GetMapping("/newVente")
+//	public String newVente() {
+//		return "newVente";
+//	}
+//
+//
+//	@GetMapping("/venteEffectuee")
+//	public String venteEffectuee() {
+//		return "venteEffectuee";
+//	}
+//
+//	@GetMapping("/venteGagnee")
+////	public String venteGagnee() {
+////		return "venteGagnee";
+////	}
 
 }

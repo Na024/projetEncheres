@@ -9,6 +9,7 @@ import java.util.Objects;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -17,6 +18,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@Component
 public class Utilisateur implements Serializable,UserDetails {
 	private static final long serialVersionUID = 1L;
 

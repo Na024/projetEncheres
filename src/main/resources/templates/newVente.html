@@ -10,57 +10,59 @@
 
 <body>
     <h1>Nouvelle vente</h1>
-    <div>
-        <img src="/360_F_59967553_9g2bvhTZf18zCmEVWcKigEoevGzFqXzq.jpeg" alt=""> 
-        <form class="container">
+    <div class="container">
+        <img src="#" alt=""> 
+        <form action="/newVente" method="post" th:object="${articleVendu}">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
             <div>
-                <label for="">Article</label>
-                <input type="text">
+                <label for="idArticle">Article :</label>
+              <input id="idArticle" type="text" th:field="*{nomArticle}">
+           </div>
+            <div>
+                <label for="idDescription">Description :</label>
+              	<textarea name="" id="idDescription" cols="30" rows="4" th:field="*{description}"></textarea>
             </div>
             <div>
-                <label for="">Description</label>
-                <textarea name="" id="" cols="30" rows="4"></textarea>
+                <label for="select">Catégorie : </label>
+			    <select  class="form-select" id="select" th:field="*{categorieArticle}">
+			        <option th:each="c : ${categories}" th:value="${c.noCategorie}" th:text="${c.libelle}"></option>
+			    </select>
+            </div>
+           <!-- <div>
+                <label for="">Photo de l'article : </label>
+                <input type="file" name="" id="" accept="image/png, image/jpeg" placeholder="UPLOADER" >
+            </div>-->
+            <div>
+                <label for="miseAPrix">Mise à prix :</label>
+                <input type="number" name="nombre" id="miseAPrix" th:field="*{miseAPrix}" value="1" min="1" max="1000" step="1">
             </div>
             <div>
-                <label for="">Catégorie</label>
-                <select name="" id="">
-                    <option value="">A</option>
-                </select>
+                <label for="dateDebut">Début de l'enchère : </label>
+                <input type="date" th:min="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" id="dateDebut" th:field="*{dateDebutEncheres}">
             </div>
             <div>
-                <label for="">Photo de l'article</label>
-                <input type="file" name="" id="" accept="image/png, image/jpeg" placeholder="UPLOADER">
-            </div>
-            <div>
-                <label for="">Mise à prix :</label>
-                <input type="number" name="nombre" id="nombre" value="1" min="1" max="1000" step="1">
-            </div>
-            <div>
-                <label for="">Début de l'enchère : </label>
-                <input type="date" min="2024-02-27">
-            </div>
-            <div>
-                <label for="">Fin de l'enchère : </label>
-                <input type="date" min="2024-02-27">
+                <label for="dateFin">Fin de l'enchère : </label>
+                <input type="date" id="dateFin" th:min="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" th:field="*{dateFinEncheres}" >
             </div>
             <div></div>
-            <fieldset>
+            <fieldset >
                 <legend>Retrait</legend>
                 <div>
-                    <label for="">Rue</label>
-                    <input type="text">
+                    <label for="rue">Rue</label>
+                    <input type="text" id="rue" th:value="${#authentication.principal.rue}" disabled>
                 </div>
                 <div>
-                    <label for="">Code postal</label>
-                    <input type="text">
+                    <label for="codePostal">Code postal</label>
+                    <input type="text" id="codePostal" th:value="${#authentication.principal.codePostal}" disabled>
                 </div>
                 <div>
-                    <label for="">Ville</label>
-                    <input type="text">
+                    <label for="ville">Ville</label>
+                    <input type="text" id="ville" th:value="${#authentication.principal.ville}"disabled>
                 </div>
             </fieldset>
-            <button type="submit"><a href="#">Enregistrer</a></button>
-            <button type="reset"><a href="#">Annuler</a></button>
+            <button type="submit">Enregistrer</button>
+            <button type="reset">Annuler</button>
         </form>
 
     </div>
