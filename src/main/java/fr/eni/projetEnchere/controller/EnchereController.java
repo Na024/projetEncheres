@@ -78,12 +78,6 @@ public class EnchereController {
 		}
 		
 		
-		
-
-		
-		/*
-		 * @GetMapping("/newVente") public String newVente() { return "newVente"; }
-		 */
 	  
 
 		@GetMapping("/newVente")
@@ -103,11 +97,6 @@ public class EnchereController {
 				
 				@AuthenticationPrincipal Utilisateur connectedUser ) {
 	        
-			/*
-			 * if (bindingResult.hasErrors()) { System.out.println("C");
-			 * 
-			 * return "newVente"; }
-			 */
 			
 			articleVendu.setVendeur(connectedUser);
 	        this.enchereService.ajouterArticleVendu(articleVendu);
@@ -116,19 +105,6 @@ public class EnchereController {
 			return "redirect:/encheres";
 		}
 
-    
-	/*
-	 * 
-	 * 
-	 * //Get mapping pose problème
-	 * 
-	 * @GetMapping("/encheres") public String getAllCategories(Model model) {
-	 * 
-	 * List<Categorie> categories = this.enchereService.getAllCategories();
-	 * System.out.println(categories); model.addAttribute("categories", categories);
-	 * 
-	 * return "encheres"; }
-	 */
     
     
 }

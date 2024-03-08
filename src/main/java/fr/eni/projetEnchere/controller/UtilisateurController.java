@@ -40,15 +40,6 @@ public class UtilisateurController {
 		return "creerProfil";
 	}
 
-//	  @PostMapping ("/creerProfil")
-//	  public String creerUnProfil (@ModelAttribute("utilisateur")Utilisateur utilisateur){
-//		  	String motDePasseEncode = passwordEncoder.encode(utilisateur.getMotDePasse());
-//		  	utilisateur.setMotDePasse(motDePasseEncode);
-//			System.out.println(utilisateur);
-//			this.enchereService.creerCompte(utilisateur);
-//	
-//		  return "redirect:/encheres";
-//	  }
 
 	@PostMapping("/creerProfil")
 	public String creerUnProfil(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
@@ -64,7 +55,7 @@ public class UtilisateurController {
 			return "creerProfil";
 		}
 
-		System.out.println(utilisateur);
+		
 		this.enchereService.creerCompte(utilisateur);
 
 		return "redirect:/encheres";
@@ -128,25 +119,16 @@ public class UtilisateurController {
 		enchereService.supprimerCompte(noUtilisateur);
 		return "redirect:/encheres";
 		}
-//	}
-
 	
 
-
-//	@GetMapping("/newVente")
-//	public String newVente() {
-//		return "newVente";
-//	}
-//
-//
-//	@GetMapping("/venteEffectuee")
-//	public String venteEffectuee() {
-//		return "venteEffectuee";
-//	}
-//
-//	@GetMapping("/venteGagnee")
-////	public String venteGagnee() {
-////		return "venteGagnee";
-////	}
-
+	
+	
+		/*
+		 * 
+		 * @GetMapping("/venteEffectuee") public String venteEffectuee() { return
+		 * "venteEffectuee"; }
+		 * 
+		 * @GetMapping("/venteGagnee") public String venteGagnee() { return
+		 * "venteGagnee"; }
+		 */
 }
