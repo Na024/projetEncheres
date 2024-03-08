@@ -4,39 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import fr.eni.projetEnchere.bo.ArticleVendu;
-import fr.eni.projetEnchere.bo.Categorie;
 import fr.eni.projetEnchere.bo.Utilisateur;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.sql.DataSource;
-
-import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-
-import fr.eni.projetEnchere.bo.ArticleVendu;
-
 import fr.eni.projetEnchere.dal.EnchereRepository;
 import fr.eni.projetEnchere.exceptions.ArticleNotFoundRuntimeException;
 
@@ -50,10 +27,6 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 		this.jdbcTemplate = jdbcTemplate;
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
 	}
-
-
-
-
 
 
 
@@ -118,13 +91,7 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
 
 
-	
-	
-	
-	
-
-
-	// filtre pour selectionner les articles par motCle et catégorie
+		// filtre pour selectionner les articles par motCle et catégorie
 	
 		@Override
 		public List<ArticleVendu> findArticleByMotCleAndCategorie(String motCle, int noCategorie) {
@@ -168,6 +135,13 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 		}
 		
 
+		
+		
+		
+		
+		
+		
+		
 	
 //         // AFFICHER DETAIL ANNONCE
 //		@Override

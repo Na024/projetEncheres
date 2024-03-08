@@ -12,29 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class EnchereSecurity {
-//	@Bean
-//	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-//		
-//		return httpSecurity
-//				.authorizeHttpRequests(
-//					auth->{
-//						
-//
-//						auth.anyRequest().permitAll();
-//					})
-//				.formLogin( login->{
-//					login.loginPage("/login");
-//					login.failureUrl("/login-error");
-//					login.defaultSuccessUrl("/mon-compte");
-//				})
-//				.logout( logout->{
-//					logout.logoutUrl("/logout");
-//					logout.logoutSuccessUrl("/login");
-//				})
-//				.build()
-//				;
-//		
-//	}
 	 
 			@Bean
 			public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -50,7 +27,7 @@ public class EnchereSecurity {
 						.permitAll()
 						.defaultSuccessUrl("/encheres")
 					)
-					//.csrf().disable() 
+					
 					.logout((logout) -> logout.permitAll()
 							.logoutSuccessUrl("/encheres"));
 	

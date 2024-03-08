@@ -34,7 +34,7 @@ public class UtilisateurDetailService implements UserDetailsService{
 		// Utilisateur trouvé
 		Utilisateur utilisateur = optUtilisateur.get();
 		
-		// Création de l'utilisateur Spring Security
+// 		Création de l'utilisateur Spring Security
 //		UserBuilder userBuilder = User.withUsername(utilisateur.getPseudo())
 //				.password(utilisateur.getMotDePasse())
 //				.roles("UTILISATEUR");

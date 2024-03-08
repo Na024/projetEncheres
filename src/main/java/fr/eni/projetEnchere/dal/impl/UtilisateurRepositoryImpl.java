@@ -13,9 +13,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-
 import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.dal.UtilisateurRepository;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
@@ -61,54 +59,6 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 	}
 
 
-//		@Override
-//		public Optional<Utilisateur> findUtilisateurByPseudo(String pseudo) {
-//			
-//			String sql = "select pseudo, mot_de_passe, administrateur from utilisateurs where pseudo=? ";
-//					
-//			Optional <Utilisateur> optUtilisateur = null;
-//			
-//			try {
-//				Utilisateur utilisateur = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Utilisateur>(Utilisateur.class),
-//						pseudo); 
-//				optUtilisateur = Optional.of(utilisateur);
-//				
-//			} catch (EmptyResultDataAccessException exc) {
-//				optUtilisateur = Optional.empty();
-//			}
-//			return optUtilisateur;
-//		}
-
-//		@Override
-//		public Optional<Utilisateur> findUtilisateurByEmail(String email) {
-//			
-//			String sql = "select email, mot_de_passe, administrateur from utilisateurs where email=? ";
-//			
-//			Optional <Utilisateur> optUtilisateur = null;
-	//
-//			try {
-//				Utilisateur utilisateur = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Utilisateur>(Utilisateur.class),
-//						email); 
-//				optUtilisateur = Optional.of(utilisateur);
-//				
-//			} catch (EmptyResultDataAccessException exc) {
-//				optUtilisateur = Optional.empty();
-//			}
-//			return optUtilisateur;
-//		}
-
-//	@Override	
-//	public Optional<Utilisateur> findUtilisateurByNoUtilisateur(int noUtilisateur) {
-//	    String sql = "SELECT no_utilisateur, pseudo, mot_de_passe, administrateur FROM utilisateurs WHERE no_utilisateur = ?";
-//	    Optional<Utilisateur> optUtilisateur = null;
-//	    try {
-//	        Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Utilisateur.class), noUtilisateur);
-//	        optUtilisateur = Optional.of(utilisateur);
-//	    } catch (EmptyResultDataAccessException exc) {
-//	        optUtilisateur = Optional.empty();
-//	    }
-//	    return optUtilisateur;
-//	}
 
 	@Override
 	public Optional<Utilisateur> consulterCompteParId(int noUtilisateur) {

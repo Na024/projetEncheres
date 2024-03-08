@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -75,12 +74,5 @@ public class CategorieRepositoryImpl implements CategorieRepository {
 		
 	}
 
-
-
-	/*
-	 * @Override public List<Categorie> getAllCategories() { String sql =
-	 * "SELECT no_categorie, libelle FROM CATEGORIES"; return
-	 * jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Categorie.class)); }
-	 */
 
 }

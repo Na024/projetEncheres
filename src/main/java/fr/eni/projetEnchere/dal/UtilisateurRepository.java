@@ -7,11 +7,6 @@ import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 
 public interface UtilisateurRepository {
 
-//  Optional<Utilisateur> findUtilisateurByPseudo (String pseudo); 
-	
-//	Optional<Utilisateur> findUtilisateurByEmail (String email);
-
-//	Optional<Utilisateur> findUtilisateurByNoUtilisateur (int noUtilisateur);
 	
 	Optional<Utilisateur> consulterCompteParId(int noUtilisateur);
 	

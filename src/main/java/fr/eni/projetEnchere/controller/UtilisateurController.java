@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.projetEnchere.bll.EnchereService;
-import fr.eni.projetEnchere.bo.Enchere;
 import fr.eni.projetEnchere.bo.Utilisateur;
 import jakarta.validation.Valid;
 
@@ -40,15 +39,6 @@ public class UtilisateurController {
 		return "creerProfil";
 	}
 
-//	  @PostMapping ("/creerProfil")
-//	  public String creerUnProfil (@ModelAttribute("utilisateur")Utilisateur utilisateur){
-//		  	String motDePasseEncode = passwordEncoder.encode(utilisateur.getMotDePasse());
-//		  	utilisateur.setMotDePasse(motDePasseEncode);
-//			System.out.println(utilisateur);
-//			this.enchereService.creerCompte(utilisateur);
-//	
-//		  return "redirect:/encheres";
-//	  }
 
 	@PostMapping("/creerProfil")
 	public String creerUnProfil(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
