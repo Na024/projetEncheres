@@ -73,7 +73,7 @@ public class EnchereController {
 			return "detailVente";
 			
 		}
-		
+
 
 		@GetMapping("/newVente")
       public String creationVente(Model model) {
@@ -92,11 +92,6 @@ public class EnchereController {
 				
 				@AuthenticationPrincipal Utilisateur connectedUser ) {
 	        
-			/*
-			 * if (bindingResult.hasErrors()) { System.out.println("C");
-			 * 
-			 * return "newVente"; }
-			 */
 			
 			articleVendu.setVendeur(connectedUser);
 	        this.enchereService.ajouterArticleVendu(articleVendu);
@@ -106,4 +101,5 @@ public class EnchereController {
 		}
 
     
+
 }

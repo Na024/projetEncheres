@@ -9,11 +9,12 @@ import fr.eni.projetEnchere.bo.Utilisateur;
 import fr.eni.projetEnchere.exceptions.UtilisateurNotFoundRuntimeException;
 
 public interface EnchereService {
-	// Méthode utilisateur
 	
-		Utilisateur creerCompte (Utilisateur utilisateur);// throws UtilisateurNotFoundRuntimeException;// voir regrouper 
+		// Méthode utilisateur
+	
+		Utilisateur creerCompte (Utilisateur utilisateur);
 		
-		void modifierCompte (Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException;// voir regrouper 
+		void modifierCompte (Utilisateur utilisateur) throws UtilisateurNotFoundRuntimeException;
 		
 		void supprimerCompte (int noUtilisateur) throws UtilisateurNotFoundRuntimeException;
 		
@@ -27,13 +28,12 @@ public interface EnchereService {
 		
 		ArticleVendu ajouterArticleVendu(ArticleVendu articleVendu); 
 		
+		
 		//List<Enchere> consulterEncheres ();
 		
 		//void rechercherArticle (String nomArticle, Categorie categorieArticle);
 		
 		//String afficherDetailArticle (int noArticle);
-		
-		//void creerEnchere (ArticleVendu articleVendu);// voir regrouper 
 		
 		//void modifierEnchere (ArticleVendu articleVendu);// voir regrouper 
 		

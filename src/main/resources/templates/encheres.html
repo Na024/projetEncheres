@@ -27,8 +27,9 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="noCategorie">Catégorie :</label>
-                             <select name="noCategorie" class="form-select" id="noCategorie">
-						        <option th:each="c : ${categories}" th:value="${c.noCategorie}" th:text="${c.libelle}" ></option>
+                             <select name="noCategorie" class="form-select" id="noCategorie" >
+								<option value="" disabled selected hidden>Choisir une categorie</option>
+						        <option th:each="c : ${categories}" th:value="${c.noCategorie}" th:text="${c.libelle}"  ></option>
 						    </select>
                         </div>
                     </div>

@@ -30,6 +30,8 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
 
 
+	// creer ou modifier article
+
 	@Override
     public ArticleVendu saveArticleVendu(ArticleVendu articleVendu) throws ArticleNotFoundRuntimeException {
 		if (articleVendu.getVendeur() == null) {
@@ -41,7 +43,6 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
         String sql = "INSERT into ARTICLES_VENDUS (nom_article, description, date_debut_encheres,date_fin_encheres, prix_initial,no_utilisateur,no_categorie)"
                     +" values ( :nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :no_utilisateur, :no_categorie)";
-        System.out.println("Generated SQL: " + sql);
 
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue ("nom_article",articleVendu.getNomArticle());
@@ -53,7 +54,6 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         parameterSource.addValue ("no_utilisateur",articleVendu.getVendeur().getNoUtilisateur());
         parameterSource.addValue ("no_categorie",articleVendu.getCategorieArticle().getNoCategorie());
         System.out.println("Article : " + articleVendu);
-        System.out.println("Vendeur : " + articleVendu.getVendeur().getNoUtilisateur() );
         
         //Le conteneur qui va recevoir la clé primaire
         //générée par la base de données
@@ -64,14 +64,14 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         
         
         articleVendu.setNoArticle(keyHolder.getKey().intValue());
-        System.out.println("if");
         }else {
-            String sql = "update ARTICLES_VENDUS set nom_article = ?, description = ?, date_debut_encheres = ?,date_fin_encheres = ?, prix_initial = ?,prix_vente = ?,no_utilisateur = ?,no_categorie = ?";
-            int nbLignes = jdbcTemplate.update(sql,articleVendu.getNomArticle(), articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),articleVendu.getMiseAPrix(),articleVendu.getPrixVente(),articleVendu.getVendeur(),articleVendu.getCategorieArticle() );
+            String sql = "update ARTICLES_VENDUS set nom_article = ?, description = ?, date_debut_encheres = ?,date_fin_encheres = ?, prix_initial = ?,prix_vente = ?,no_utilisateur = ?,"
+            			+ "no_categorie = ?";
+            int nbLignes = jdbcTemplate.update(sql,articleVendu.getNomArticle(), articleVendu.getDescription(),articleVendu.getDateDebutEncheres(),articleVendu.getDateFinEncheres(),
+            									articleVendu.getMiseAPrix(),articleVendu.getPrixVente(),articleVendu.getVendeur(),articleVendu.getCategorieArticle() );
             if (nbLignes==0) {
                 throw new ArticleNotFoundRuntimeException();
             }
-            System.out.println("else");
         }
         
         return articleVendu;

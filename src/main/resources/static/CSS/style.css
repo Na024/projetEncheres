@@ -58,3 +58,11 @@ h1{
 .buttonCentered {
     margin: 50px;
 }
+
+.container label {
+	margin-top: 0.3vw;
+}
+
+:disabled{
+  background: none;
+}
